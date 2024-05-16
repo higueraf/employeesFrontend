@@ -1,0 +1,73 @@
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mx-auto">Módulo de Empleados</span>
+        </div>
+    </nav>
+    
+    
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-8">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="nombreInput">Nombre:</label>
+                    <input type="text" id="nombreInput" class="form-control" [(ngModel)]="getListInterface.NombreFilter" placeholder="Nombre">
+                </div>
+                <div class="col-md-4">
+                    <label for="codigoInput">Código Empleado:</label>
+                    <input type="text" id="codigoInput" class="form-control" [(ngModel)]="getListInterface.CodigoFilter" placeholder="Código Empleado">
+                </div>
+                <div class="col-md-4">
+                    <br/>
+                    <button class="btn btn-success btn-rounded" (click)="buscar()">Buscar</button>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleadosList" (click)="updateEmpleado(empleado.id)">
+                        <td>{{ empleado.apellidos }} {{ empleado.nombres }}</td>
+                        <td>{{ empleado.codigo }}</td>
+                        <td>{{ empleado.estado ? 'Vigente' : 'Retirado' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="getListInterface.NumPage === 1">
+                        <button class="page-link" (click)="onPageChange(getListInterface.NumPage - 1)" [disabled]="getListInterface.NumPage === 1">Anterior</button>
+                    </li>
+                    <li class="page-item" *ngFor="let page of totalPagesArray" [class.active]="page === getListInterface.NumPage">
+                        <button class="page-link" (click)="onPageChange(page)">{{page}}</button>
+                    </li>
+                    <li class="page-item" [class.disabled]="getListInterface.NumPage === totalPages">
+                        <button class="page-link" (click)="onPageChange(getListInterface.NumPage + 1)" [disabled]="getListInterface.NumPage === totalPages">Siguiente</button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    <button class="btn btn-success btn-block mb-2" (click)="createEmpleado()">Crear</button>
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn btn-warning btn-block mb-2" text-white>Reporte</button>
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn btn-danger btn-block">Salir</button>
+                </div>
+            </div>
+            
+            
+
+                          
+        </div>
+    </div>
+</div>

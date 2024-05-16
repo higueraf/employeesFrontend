@@ -1,0 +1,63 @@
+<div>
+
+  <div class="navbar navbar-expand-lg navbar-light bg-light navbar-menu">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <a class="navbar-brand">Sistema de Control de Empleados</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa fa-user" style="color: black;"></i></span>
+        </button>
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle bg-white text-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    <a style="color: black;">{{ userName }} </a> <i class="fa fa-user" style="color: black;"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+    <li><a class="dropdown-item" href="#">Salir</a></li>
+  </ul>
+</div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+      <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+        <div class="sidebar-sticky">
+          <br />
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link">
+                Menu
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/dashboard']">
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/empleados']">
+                Empleados
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/usuarios']">
+                Usuarios
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div class="content container-fluid mt-5">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+.mat-toolbar {
+  overflow: hidden;
+}
+.dropdown-toggle::after {
+  color: black !important;
+}
+
+.btn-secondary {
+  background-color: white;
+  border-color: white;
+}
+
+.dropdown-menu {
+  background-color: white;
+  color: black;
+}
+
+
+.navbar-menu {
+  flex-grow: 1;
+  
+}
+

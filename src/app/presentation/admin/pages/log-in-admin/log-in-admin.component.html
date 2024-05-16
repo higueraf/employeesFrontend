@@ -1,0 +1,29 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center">
+  <div class="card box">
+    <div class="card-header">
+      <h5 align="center">Sistema de Control de Personal</h5>
+    </div>
+    <form class="login-form">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="UserName">Correo Electrónico</label>
+          <input type="email" class="form-control" id="UserName" [(ngModel)]="userLoginRequestInterface.email"
+            [ngModelOptions]="{standalone: true}" />
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="userLoginRequestInterface.password"
+            [ngModelOptions]="{standalone: true}" />
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" (click)="login()">Entrar</button>
+    </form>
+    <div id="success-alert" style="display: none;" class="alert alert-success" role="alert">
+      ¡Inicio de sesión exitoso!
+    </div>
+    
+    <div id="error-alert" style="display: none;" class="alert alert-danger" role="alert">
+      ¡El inicio de sesión falló! Por favor, verifica tus credenciales e intenta nuevamente.
+    </div>
+  </div>
+</div>

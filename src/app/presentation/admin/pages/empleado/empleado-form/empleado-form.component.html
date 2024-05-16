@@ -1,0 +1,185 @@
+<div>
+    <div class="card">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+            <div class="container">
+                <span class="navbar-brand mx-auto">Módulo de Empleados</span>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-info rounded">
+            <div class="container">
+                <span class="navbar-brand mx-auto">CREAR EMPLEADO NUEVO</span>
+            </div>
+        </nav>
+        <div class="card-body">
+            <form>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="showPersonalDataTab()"
+                            [class.active]="activeTab === 'personal'">Datos Personales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="showWorkDataTab()" [class.active]="activeTab === 'work'">Datos
+                            Laborales</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div *ngIf="activeTab === 'personal'" class="tab-pane fade show active">
+                        <br />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nombres" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres"
+                                    [(ngModel)]="empleadoInterface.nombres" >
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos"
+                                    [(ngModel)]="empleadoInterface.apellidos">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="cedula" class="form-label">Cedula</label>
+                                <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Cedula"
+                                    [(ngModel)]="empleadoInterface.cedula">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="provincia" class="form-label">Provincia</label>
+                                <select class="form-select"  id="provincia" name="provincia" (change)="changeProvinciaId($event)">
+                                    <option value="" disabled selected>Escoja una provincia...</option>
+                                    <option *ngFor="let provincia of provincias" [value]="provincia.id">{{
+                                        provincia.nombre_provincia }}</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"
+                                    [(ngModel)]="empleadoInterface.fecha_nacimiento">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="Email"
+                                    [(ngModel)]="empleadoInterface.email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="observaciones" class="form-label">Observaciones</label>
+                                <textarea class="form-control" id="observaciones" name="observaciones"
+                                    placeholder="Comentario u Observación referente a la ficha personal"
+                                    [(ngModel)]="empleadoInterface.observaciones" rows="4"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="foto" class="form-label">Fotografía</label><br />
+                                <img [src]="fotoTemp ? fotoTemp : (empleadoInterface.foto ? empleadoInterface.foto : 'http://localhost:4200/assets/foto.png')"
+                                    id="imagen-preview" alt="Imagen preview" style="width: 120px; height: 120px;">
+                                <input type="file" class="form-control" id="foto"  name="foto" style="display: none;"
+                                    [(ngModel)]="empleadoInterface.foto" (change)="onFileSelected($event)" #fileUpload>
+                                <button type="button" class="btn btn-primary" (click)="fileUpload.click()">Cargar
+                                    Imagen</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="activeTab === 'work'" class="tab-pane fade show active">
+                        <br />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="fecha-ingreso" class="form-label">Fecha de
+                                    Ingreso</label>
+                                <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso"
+                                    [(ngModel)]="empleadoInterface.fecha_ingreso">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cargo" class="form-label">Cargo</label>
+                                <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo"
+                                    [(ngModel)]="empleadoInterface.cargo">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="departamento" class="form-label">Departamento</label>
+                                <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Departamento"
+                                    [(ngModel)]="empleadoInterface.departamento">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="id_provincia_cargo" class="form-label">Provincia</label>
+                                <select class="form-select" id="id_provincia_cargo" name="id_provincia_cargo"
+                                (change)="changeProvinciaCargoId($event)">
+                                    <option value="" disabled selected>Escoja una provincia...</option>
+                                    <option *ngFor="let provincia of provincias"  [value]="provincia.id">{{
+                                        provincia.nombre_provincia }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="salario" class="form-label">Salario</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="salario" name="salario" placeholder="Salario"
+                                        [(ngModel)]="empleadoInterface.sueldo">
+                                    <span class="input-group-text">USD</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Jornada Parcial</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jornadaParcial"
+                                        id="jornadaParcialSi" value="si"
+                                        [(ngModel)]="empleadoInterface.jornada_parcial">
+                                    <label class="form-check-label" for="jornadaParcialSi">Si</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="jornadaParcial"
+                                        id="jornadaParcialNo" value="no"
+                                        [(ngModel)]="empleadoInterface.jornada_parcial">
+                                    <label class="form-check-label" for="jornadaParcialNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="estado" name="estado"
+                                        [(ngModel)]="empleadoInterface.estado">
+                                    <label class="form-check-label" for="estado">Activo</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="codigo" class="form-label">Código</label>
+                                <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código"
+                                    [(ngModel)]="empleadoInterface.codigo">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label for="observaciones_cargo" class="form-label">Observaciones</label>
+                                <textarea class="form-control" id="observaciones_cargo" name="observaciones_cargo"
+                                    placeholder="Comentario u observación referente a LA FICHA LABORAL"
+                                    [(ngModel)]="empleadoInterface.observaciones_cargo" rows="4"></textarea>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 text-center">
+                        <button class="btn btn-success btn-block mb-2" (click)="save()" >Continuar</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button class="btn btn-warning btn-block mb-2">Reporte</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button class="btn btn-danger btn-block">Salir</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

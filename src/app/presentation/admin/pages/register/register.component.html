@@ -1,0 +1,26 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center">
+    <div class="card box">
+        <div class="card-header">
+            <h5 class="card-title">Registro de Nuevo Usuario</h5>
+        </div>
+        <form class="example-form">
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" [(ngModel)]="userInterface.username" id="userName" placeholder="Nombre de usuario" />
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control mb-3" [(ngModel)]="userInterface.email" id="email" placeholder="Correo electrónico" />
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" class="form-control mb-3" [(ngModel)]="userInterface.password" id="password" placeholder="Contraseña" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control mb-3" [(ngModel)]="passwordConfirmed" id="passwordConfirm" placeholder="Confirmar contraseña" />
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-primary btn-block" (click)="register()">Enviar</button>
+            <button type="button" class="btn btn-outline-secondary btn-block mt-3" (click)="changeToLogin()">Login</button>
+        </form>
+    </div>
+</div>

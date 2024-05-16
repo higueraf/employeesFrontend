@@ -1,0 +1,122 @@
+$background-color: #e2e2e2;
+$card-background-color: #ffffff;
+$box-border-radius: 10px;
+
+@mixin box-shadow {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  min-height: 100vh;.dashboard-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .image-container {
+    margin-top: 20px;
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+  }
+  background: $background-color;
+}
+
+.app-header {
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  @include box-shadow;
+}
+
+.login-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  background: $card-background-color; // Utilizando el nuevo color de fondo
+  border-radius: $box-border-radius;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+}
+
+.login-wrapper .class-form {
+  min-width: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.login-wrapper .full-width,
+.login-wrapper .btn-block {
+  width: 100%;
+}
+
+.login-wrapper mat-card-header {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
+
+.login-wrapper mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+  text-align: center; // Centrando el mat-card-title
+}
+
+.login-wrapper .mat-card {
+  padding: 40px 70px 50px;
+  background: none; // Quitando el fondo de la mat-card
+}
+
+.login-wrapper .mat-stroked-button {
+  border: 1px solid currentColor;
+  line-height: 54px;
+  background: #FFF7FA;
+}
+
+.login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.8375em 0;
+}
+
+.button-blue-1 {
+  background-color: #00a6fb; // Azul claro
+  color: white !important;
+}
+
+.button-blue-2 {
+  background-color: #ff7f7f; // Rojo claro
+  color: white !important;
+}
+
+.button-blue-3 {
+  background-color: #74c0fc; // Azul más claro
+  color: white !important;
+}
+.content {
+  margin: 0.5cm;
+}

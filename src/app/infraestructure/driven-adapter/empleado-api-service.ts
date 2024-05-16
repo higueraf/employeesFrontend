@@ -31,7 +31,7 @@ export class EmpleadoApiService {
   }
   updateEmpleado(empleadoInterface: EmpleadoInterface): Observable<EmpleadoInterface>{
     const formData = this.createFormData(empleadoInterface)
-    return this.http.put<EmpleadoInterface>(this.BASE_URL+"/empleados/update/"+empleadoInterface.id, formData);
+    return this.http.post<EmpleadoInterface>(this.BASE_URL+"/empleados/update/"+empleadoInterface.id, formData);
   }
   deleteEmpleado(empleadoId: string): Observable<EmpleadoInterface>{
     return this.http.delete<EmpleadoInterface>(this.BASE_URL+"/empleados/delete/"+empleadoId);

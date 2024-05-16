@@ -7,11 +7,11 @@ export interface EmpleadoInterface {
     fecha_nacimiento?: string,
     email?: string,
     observaciones?: string,
-    foto?: File | null,
+    foto?: File | null | string,
     fecha_ingreso?: string,
     cargo?: string,
     departamento?: string,
-    jornada_parcial?: boolean,
+    jornada_parcial?: string,
     id_provincia_cargo?: number,
     codigo?: string;
     sueldo?: number;

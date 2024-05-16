@@ -36,8 +36,24 @@ export class EmpleadoFormComponent {
         .subscribe((empleadoResponse: any) => {
           const empleado = empleadoResponse.data;
           this.empleadoInterface.id = empleado.id;
+          this.empleadoInterface.cedula = empleado.cedula;
           this.empleadoInterface.nombres = empleado.nombres;
           this.empleadoInterface.apellidos = empleado.apellidos;
+          this.empleadoInterface.fecha_nacimiento = empleado.fecha_nacimiento;
+          this.empleadoInterface.email = empleado.email;
+          this.empleadoInterface.id_provincia = empleado.id_provincia;
+          this.empleadoInterface.observaciones = empleado.observaciones;
+          this.empleadoInterface.foto = empleado.foto;
+          this.empleadoInterface.fecha_ingreso = empleado.fecha_ingreso;
+          this.empleadoInterface.cargo = empleado.cargo;
+          this.empleadoInterface.departamento = empleado.departamento;
+          this.empleadoInterface.jornada_parcial = empleado.jornada_parcial ? 'si' : 'no';
+          this.empleadoInterface.id_provincia_cargo = empleado.id_provincia_cargo;
+          this.empleadoInterface.codigo = empleado.codigo;
+          this.empleadoInterface.sueldo = empleado.sueldo;
+          this.empleadoInterface.estado = empleado.estado;
+          this.empleadoInterface.observaciones_cargo = empleado.observaciones_cargo;
+          
         });
 
     }

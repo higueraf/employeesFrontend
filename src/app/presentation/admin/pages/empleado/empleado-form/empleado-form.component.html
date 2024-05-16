@@ -28,13 +28,13 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="nombres" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres"
-                                    [(ngModel)]="empleadoInterface.nombres" >
+                                <input type="text" class="form-control" id="nombres" name="nombres"
+                                    placeholder="Nombres" [(ngModel)]="empleadoInterface.nombres">
                             </div>
                             <div class="col-md-6">
                                 <label for="apellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos"
-                                    [(ngModel)]="empleadoInterface.apellidos">
+                                <input type="text" class="form-control" id="apellidos" name="apellidos"
+                                    placeholder="Apellidos" [(ngModel)]="empleadoInterface.apellidos">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -45,7 +45,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="provincia" class="form-label">Provincia</label>
-                                <select class="form-select"  id="provincia" name="provincia" (change)="changeProvinciaId($event)">
+                                <select class="form-select" id="provincia" name="provincia"
+                                    (change)="changeProvinciaId($event)" [(ngModel)]="empleadoInterface.id_provincia">
                                     <option value="" disabled selected>Escoja una provincia...</option>
                                     <option *ngFor="let provincia of provincias" [value]="provincia.id">{{
                                         provincia.nombre_provincia }}</option>
@@ -62,7 +63,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email"  placeholder="Email"
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                                     [(ngModel)]="empleadoInterface.email">
                             </div>
                         </div>
@@ -77,7 +78,7 @@
                                 <label for="foto" class="form-label">Fotografía</label><br />
                                 <img [src]="fotoTemp ? fotoTemp : (empleadoInterface.foto ? empleadoInterface.foto : 'http://localhost:4200/assets/foto.png')"
                                     id="imagen-preview" alt="Imagen preview" style="width: 120px; height: 120px;">
-                                <input type="file" class="form-control" id="foto"  name="foto" style="display: none;"
+                                <input type="file" class="form-control" id="foto" name="foto" style="display: none;"
                                     [(ngModel)]="empleadoInterface.foto" (change)="onFileSelected($event)" #fileUpload>
                                 <button type="button" class="btn btn-primary" (click)="fileUpload.click()">Cargar
                                     Imagen</button>
@@ -104,15 +105,15 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="departamento" class="form-label">Departamento</label>
-                                <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Departamento"
-                                    [(ngModel)]="empleadoInterface.departamento">
+                                <input type="text" class="form-control" id="departamento" name="departamento"
+                                    placeholder="Departamento" [(ngModel)]="empleadoInterface.departamento">
                             </div>
                             <div class="col-md-6">
                                 <label for="id_provincia_cargo" class="form-label">Provincia</label>
                                 <select class="form-select" id="id_provincia_cargo" name="id_provincia_cargo"
-                                (change)="changeProvinciaCargoId($event)">
+                                    (change)="changeProvinciaCargoId($event)" [(ngModel)]="empleadoInterface.id_provincia_cargo">
                                     <option value="" disabled selected>Escoja una provincia...</option>
-                                    <option *ngFor="let provincia of provincias"  [value]="provincia.id">{{
+                                    <option *ngFor="let provincia of provincias" [value]="provincia.id">{{
                                         provincia.nombre_provincia }}</option>
                                 </select>
                             </div>
@@ -121,8 +122,8 @@
                             <div class="col-md-6">
                                 <label for="salario" class="form-label">Salario</label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="salario" name="salario" placeholder="Salario"
-                                        [(ngModel)]="empleadoInterface.sueldo">
+                                    <input type="number" class="form-control" id="salario" name="salario"
+                                        placeholder="Salario" [(ngModel)]="empleadoInterface.sueldo">
                                     <span class="input-group-text">USD</span>
                                 </div>
                             </div>
@@ -170,7 +171,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-4 text-center">
-                        <button class="btn btn-success btn-block mb-2" (click)="save()" >Continuar</button>
+                        <button class="btn btn-success btn-block mb-2" (click)="save()">Guardar</button>
                     </div>
                     <div class="col-md-4 text-center">
                         <button class="btn btn-warning btn-block mb-2">Reporte</button>

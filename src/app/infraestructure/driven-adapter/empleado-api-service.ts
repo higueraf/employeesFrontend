@@ -52,7 +52,7 @@ createFormData (empleadoInterface: EmpleadoInterface): any{
     const fechaNacimientoFormatted = this.formatDate(fechaNacimiento);
     const fechaIngresoFormatted = this.formatDate(fechaIngreso);
     formData.append('foto', empleadoInterface.foto!);
-    formData.append('cedula', empleadoInterface.nombres!);
+    formData.append('cedula', empleadoInterface.cedula!);
     formData.append('nombres', empleadoInterface.nombres!);
     formData.append('apellidos', empleadoInterface.apellidos!);
     formData.append('fecha_nacimiento', fechaNacimientoFormatted);
@@ -62,12 +62,13 @@ createFormData (empleadoInterface: EmpleadoInterface): any{
     formData.append('fecha_ingreso', fechaIngresoFormatted);
     formData.append('cargo', empleadoInterface.cargo!);
     formData.append('departamento', empleadoInterface.departamento!);
-    formData.append('jornada_parcial', empleadoInterface.jornada_parcial ? '1' : '0');
+    formData.append('jornada_parcial', empleadoInterface.jornada_parcial == 'si' ? '1' : '0');
     formData.append('id_provincia_cargo', empleadoInterface.id_provincia_cargo!.toString());
     formData.append('codigo', empleadoInterface.codigo!);
     formData.append('sueldo', empleadoInterface.sueldo!.toString());
     formData.append('estado', empleadoInterface.estado? '1' : '0');
     formData.append('observaciones_cargo', empleadoInterface.observaciones_cargo!);
+    return formData;
 }
 
 

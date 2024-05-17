@@ -17,4 +17,6 @@ export interface EmpleadoInterface {
     sueldo?: number;
     estado?: boolean;
     observaciones_cargo?: string,
+    provincia?: any,
+    provincia_cargo?: any,
 }

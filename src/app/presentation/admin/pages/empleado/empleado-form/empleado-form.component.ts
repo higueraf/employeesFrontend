@@ -62,7 +62,7 @@ export class EmpleadoFormComponent {
     .subscribe((provinciasResponse: any) => {
       this.provincias = provinciasResponse.data;
     });
-    this.verifyFields();
+    
   }
   @Output()
   empleado = new EventEmitter<boolean>();
@@ -109,12 +109,10 @@ export class EmpleadoFormComponent {
   changeProvinciaId(event: any) {
     this.empleadoInterface.id_provincia = event.target.value;
   }
-  verifyFields(): void {
-    
-  const values = Object.values(this.empleadoInterface);
-
-  this.saveEnabled = values.every(value => !!value);
-    
-    
+  goToReport() {
+    this.router.navigate(['/empleados/report']);
+  }
+  goToEmployees() {
+    this.router.navigate(['/empleados']);
   }
 }

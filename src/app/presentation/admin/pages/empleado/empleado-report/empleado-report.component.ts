@@ -6,17 +6,18 @@ import { EmpleadoInterface } from '@app/domain/models/empleado.interface';
 import { EmpleadoApiService } from '@app/infraestructure/driven-adapter/empleado-api-service';
 
 @Component({
-  selector: 'app-empleado-list',
-  templateUrl: './empleado-list.component.html',
-  styleUrls: ['./empleado-list.component.scss'],
+  selector: 'app-empleado-report',
+  templateUrl: './empleado-report.component.html',
+  styleUrls: ['./empleado-report.component.scss'],
 })
-export class EmpleadoListComponent {
+export class EmpleadoReportComponent {
   getListInterface: GetListInterface = {
     NumPage: 1,
     NumRecordsPage: 10,
     Order: 'desc',
-    Sort: 'id',
+    Sort: 'apellidos',
     NumFilter: 0,
+    AllRegisters: true,
   };
 
   totalRecords = 0;
@@ -37,8 +38,8 @@ export class EmpleadoListComponent {
     this.getEmpleados();
   }
 
-  createEmpleado() {
-    this.router.navigate(['/empleados/new']);
+  goToEmployees() {
+    this.router.navigate(['/empleados']);
   }
 
   updateEmpleado(id: any) {
@@ -58,10 +59,7 @@ export class EmpleadoListComponent {
     this.totalPagesArray = [];
     this.getEmpleados();
   }
-  buscar() {
-    this.totalPagesArray = [];
-    this.getEmpleados();
-  }
+  
   calculatePages() {
     for (let i = 1; i <= this.totalPages; i++) {
       this.totalPagesArray.push(i);
@@ -72,16 +70,19 @@ export class EmpleadoListComponent {
     this.empleadoApiService
       .getEmpleados(this.getListInterface)
       .subscribe((empleadoResponse: any) => {
-        this.empleadosList = empleadoResponse.data.data;
-        this.totalRecords = empleadoResponse.data.total;
-        this.totalPages = empleadoResponse.data.last_page;
+        this.empleadosList = empleadoResponse.data;
         this.calculatePages();
       });
   }
-  goToReport() {
-    this.router.navigate(['/empleados/report']);
-  }
-  goToDashboard() {
-    this.router.navigate(['/empleados']);
+
+  orderBy(sort: any) {
+    if (this.getListInterface.Order == 'desc'){
+      this.getListInterface.Order = 'asc';
+    } else {
+      this.getListInterface.Order = 'desc';
+    }
+    this.getListInterface.Sort = sort;
+    this.totalPagesArray = [];
+    this.getEmpleados();
   }
 }

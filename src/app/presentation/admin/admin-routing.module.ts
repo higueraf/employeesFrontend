@@ -5,6 +5,7 @@ import { LogInAdminComponent } from './pages/log-in-admin/log-in-admin.component
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmpleadoListComponent } from './pages/empleado/empleado-list/empleado-list.component';
 import { EmpleadoFormComponent } from './pages/empleado/empleado-form/empleado-form.component';
+import { EmpleadoReportComponent } from './pages/empleado/empleado-report/empleado-report.component';
 
 
 const routes: Routes = [  
@@ -14,12 +15,8 @@ const routes: Routes = [
     children: [
       { path:'dashboard', component: DashboardComponent},
       { path:'empleados', component: EmpleadoListComponent },
+      { path:'empleados/report', component: EmpleadoReportComponent },
       { path:'empleados/:id', component: EmpleadoFormComponent },
-      /*
-      { path: 'empleados',
-        loadChildren: () => import('@app/presentation/admin/pages/empleado/empleado.module').then(m => m.EmpleadoModule)
-      },*/
-      
     ]
   }
 ];

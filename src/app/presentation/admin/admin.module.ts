@@ -10,6 +10,7 @@ import { RowActionsComponent } from './common/row-actions/row-actions.component'
 import { RegisterComponent } from './pages/register/register.component';
 import { EmpleadoFormComponent } from './pages/empleado/empleado-form/empleado-form.component';
 import { EmpleadoListComponent } from './pages/empleado/empleado-list/empleado-list.component';
+import { EmpleadoReportComponent } from './pages/empleado/empleado-report/empleado-report.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { EmpleadoListComponent } from './pages/empleado/empleado-list/empleado-l
     RowActionsComponent,
     EmpleadoFormComponent,
     EmpleadoListComponent,
+    EmpleadoReportComponent,
   ],
   imports: [
     CommonModule,

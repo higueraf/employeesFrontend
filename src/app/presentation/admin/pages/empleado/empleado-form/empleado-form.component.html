@@ -7,7 +7,7 @@
         </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-info rounded">
             <div class="container">
-                <span class="navbar-brand mx-auto">CREAR EMPLEADO NUEVO</span>
+                <span class="navbar-brand mx-auto">{{ modeNew ? 'CREAR EMPLEADO NUEVO' : 'EDITAR EMPLEADO EXISTENTE' }}</span>
             </div>
         </nav>
         <div class="card-body">
@@ -174,10 +174,10 @@
                         <button class="btn btn-success btn-block mb-2" (click)="save()">Guardar</button>
                     </div>
                     <div class="col-md-4 text-center">
-                        <button class="btn btn-warning btn-block mb-2">Reporte</button>
+                        <button class="btn btn-warning btn-block mb-2 text-white" (click)="goToReport()">Reporte</button>
                     </div>
                     <div class="col-md-4 text-center">
-                        <button class="btn btn-danger btn-block">Salir</button>
+                        <button class="btn btn-danger btn-block" (click)="goToEmployees()">Salir</button>
                     </div>
                 </div>
             </form>

@@ -9,4 +9,5 @@ export interface GetListInterface {
     TextFilter?: string,
     NombreFilter?: string,
     CodigoFilter?: string,
+    AllRegisters?: boolean,
 }

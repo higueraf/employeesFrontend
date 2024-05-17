@@ -1,0 +1,152 @@
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mx-auto">Módulo de Empleados</span>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info rounded">
+        <div class="container">
+            <span class="navbar-brand mx-auto">REPORTE DE EMPLEADOS</span>
+        </div>
+    </nav>
+    <br/>
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" (click)="orderBy('apellidos')">
+                            NOMBRE 
+                            <span *ngIf="getListInterface.Sort === 'apellidos' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'apellidos' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('cedula')">
+                            CEDULA
+                            <span *ngIf="getListInterface.Sort === 'cedula' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'cedula' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('codigo')">
+                            CÓDIGO
+                            <span *ngIf="getListInterface.Sort === 'codigo' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'codigo' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('id_provincia_cargo')">
+                            DIVISION
+                            <span *ngIf="getListInterface.Sort === 'id_provincia_cargo' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'id_provincia_cargo' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('departamento')">
+                            DEPARTAMENTO
+                            <span *ngIf="getListInterface.Sort === 'departamento' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'departamento' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('cargo')">
+                            CARGO
+                            <span *ngIf="getListInterface.Sort === 'cargo' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'cargo' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('fecha_ingreso')">
+                            FECHA ING.
+                            <span *ngIf="getListInterface.Sort === 'fecha_ingreso' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'fecha_ingreso' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('estado')">
+                            STATUS
+                            <span *ngIf="getListInterface.Sort === 'estado' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'estado' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('sueldo')">
+                            SUELDO
+                            <span *ngIf="getListInterface.Sort === 'sueldo' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'sueldo' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('email')">
+                            EMAIL
+                            <span *ngIf="getListInterface.Sort === 'email' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'email' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="orderBy('id_provincia')">
+                            PROVINCIA
+                            <span *ngIf="getListInterface.Sort === 'id_provincia' && getListInterface.Order === 'desc'">
+                                <i class="fa fa-arrow-up"></i>
+                            </span>
+                            <span *ngIf="getListInterface.Sort === 'id_provincia' && getListInterface.Order !== 'desc'">
+                                <i class="fa fa-arrow-down"></i>
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleadosList">
+                        <td>{{ empleado.apellidos }} {{ empleado.nombres }}</td>
+                        <td>{{ empleado.cedula }}</td>
+                        <td>{{ empleado.codigo }}</td>
+                        <td>{{ empleado.provincia_cargo.nombre_provincia }}</td>
+                        <td>{{ empleado.departamento }}</td>
+                        <td>{{ empleado.cargo }}</td>
+                        <td>{{ empleado.fecha_ingreso }}</td>
+                        <td>{{ empleado.estado ? 'Vigente' : 'Retirado' }}</td>
+                        <td>{{ empleado.sueldo }}</td>
+                        <td>{{ empleado.email }}</td>
+                        <td>{{ empleado.provincia.nombre_provincia }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center">
+                    
+                </div>
+                <div class="col-md-4 text-center">
+                    <button class="btn btn-danger btn-block" (click)="goToEmployees()">Salir</button>
+                </div>
+                <div class="col-md-4 text-center">
+                    
+                </div>
+            </div>
+            
+            
+
+                          
+        </div>
+    </div>
+</div>
